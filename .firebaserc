@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "ramadan-shooping-cart": {
+      "hosting": {
+        "shopping-cart": [
+          "ramadan-shooping-cart"
+        ]
+      }
+    }
+  }
+}

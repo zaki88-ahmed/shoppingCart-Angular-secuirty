@@ -1,0 +1,35 @@
+
+<p>
+  <a routerLink="/admin/product/new" class="btn btn-primary">New Product</a>
+</p>
+<p>
+  <input type="text" placeholder="Find Car" #query (keyup)="filter(query.value)" class="form-control">
+</p>
+        <table datatable [dtOptions]="dtOptions" class="table table-striped" [dtTrigger]="dtTrigger">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Title</th>
+              <th scope="col">Price</th>
+              <th scope="col">Edit</th>
+              <th scope="col">Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of filteredProducts ; let i = index">
+              <th scope="row">{{i +1}}</th>
+              <td>{{product.payload.val().title}}</td>
+              <td>{{product.payload.val().price}}</td>
+              <td>
+                <a routerLink="/admin/product/{{product.key}}" class="btn btn-warning">Edit</a>
+              </td>
+              <td>
+                <button (click)="delete(product.key)" class="btn btn-danger">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+          </table>
+
+    
+
+

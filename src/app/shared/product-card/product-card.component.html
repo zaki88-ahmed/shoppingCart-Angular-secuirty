@@ -1,0 +1,32 @@
+<div *ngIf="product.payload.val().title || product.title" class="card" style="width: 18rem;">
+    <img class="card-img-top" [src]="product.payload.val().imageUrl" alt="Card image cap">
+
+    <div class="card-body">
+        <h5 class="card-title">{{product.payload.val().title}}</h5>
+        <p class="card-title">{{product.payload.val().category}}</p>
+        <p class="card-text">{{product.payload.val().price | currency: 'usd':true}}</p>
+    </div>
+
+    <div class="card-footer" *ngIf="ShowAdd">
+        <button *ngIf="getQuantity() === 0; else itemExists" (click)="addToCart(product)" class="btn btn-primary btn-block">Add To Cart</button>
+
+        <ng-template #itemExists>
+            <div class="row">
+
+                <div class="col-2">
+                    <button (click)="addToCart(product)" class="btn btn-secondary btn-block">+</button>
+                </div>
+
+                <div class="col text-center">
+                    {{getQuantity()}} in cart
+                </div>
+
+                <div class="col-2">
+                    <button (click)="removeFromCart(product)" class="btn btn-secondary btn-block">-</button>
+                </div>
+            </div>
+        </ng-template>
+
+
+    </div>
+</div>
